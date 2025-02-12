@@ -8,7 +8,8 @@ function findByLegAndHypotenuse(leg, hypotenuse){
 b = ${leg2}
 c = ${hypotenuse}
 alpha = ${alpha}
-beta = ${beta}`)
+beta = ${beta}
+"success"`)
 }
 
 function findByTwoLegs(leg1, leg2){
@@ -21,13 +22,14 @@ function findByTwoLegs(leg1, leg2){
 b = ${leg2}
 c = ${c}
 alpha = ${alpha}
-beta = ${beta}`)
+beta = ${beta}
+"success"`)
 }
 
 function findByLegAndAdjacentAngle(adjacentAngle, Leg){
     if(adjacentAngle >= 90){
         console.log("Значення цього кута повинно бути меншим за 90\n"+
-            "Value of that angle must be less than 90");
+            "Value of that angle must be less than 90\n\"failed\"");
         return;
     }
     let in_radians = adjacentAngle*Math.PI/180;
@@ -39,13 +41,14 @@ function findByLegAndAdjacentAngle(adjacentAngle, Leg){
 b = ${Leg2}
 c = ${c}
 alpha = ${adjacentAngle}
-beta = ${beta}`)
+beta = ${beta}
+"success"`)
 }
 
 function findByLegAndOppositeAngle(oppositeAngle, Leg){
     if(oppositeAngle >= 90){
         console.log("Значення цього кута повинно бути меншим за 90\n"+
-            "Value of that angle must be less than 90");
+            "Value of that angle must be less than 90\n\"failed\"");
         return;
     }
     let in_radians = oppositeAngle*Math.PI/180;
@@ -57,13 +60,14 @@ function findByLegAndOppositeAngle(oppositeAngle, Leg){
 b = ${Leg2}
 c = ${c}
 alpha = ${oppositeAngle}
-beta = ${beta}`)
+beta = ${beta}
+"success"`)
 }
 
 function findByHipotenuseAndAngle(angle, hypotenuse){
     if(angle >= 90){
         console.log("Значення цього кута повинно бути меншим за 90\n"+
-            "Value of that angle must be less than 90"
+            "Value of that angle must be less than 90\n\"failed\""
         );
         return;
     }
@@ -74,7 +78,8 @@ function findByHipotenuseAndAngle(angle, hypotenuse){
 b = ${b}
 c = ${hypotenuse}
 alpha = ${angle}
-beta = ${beta}`)
+beta = ${beta}
+"success"`)
 }
 const availableInput = ["leg", "hypotenuse", "adjacent angle","opposite angle", "angle"];
 const rightInputs = [[0,1], [2,0], [3,0], [4,1], [0,0]];
@@ -82,8 +87,8 @@ const rightInputs = [[0,1], [2,0], [3,0], [4,1], [0,0]];
 function triangle(number1, nameOfThatNumber, number2, nameOfNumber2){
 
     if(number1 <= 0 || number2 <= 0){
-        console.log("Значення параметрів цієї функції повинні бути більшими, ніж 0\n"+ 
-            "Values of these parameters must be bigger than 0"
+        console.log("Значення параметрів цієї функції повинні бути більше 0\n"+ 
+            "Values of these parameters must be bigger than 0\n\"failed\""
         );
         return;
     }
