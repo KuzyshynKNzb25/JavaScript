@@ -1,4 +1,8 @@
 function findByLegAndHypotenuse(leg, hypotenuse){
+    if(leg > hypotenuse){
+        console.log("Катет не може бути більшим, ніж гіпотенуза\nLeg can't be bigger than hypotenuse\n\"failed\"");
+        return;
+    }
     var leg2 = Math.sqrt(Math.pow(hypotenuse, 2) - Math.pow(leg, 2)) ;
     var alpha = Math.asin(leg/hypotenuse);
     alpha = alpha*180/Math.PI;
