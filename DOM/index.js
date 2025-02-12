@@ -82,7 +82,7 @@ const rightInputs = [[0,1], [2,0], [3,0], [4,1], [0,0]];
 function triangle(number1, nameOfThatNumber, number2, nameOfNumber2){
 
     if(number1 <= 0 || number2 <= 0){
-        console.log("Значення параметрів цієї функції не можуть бути менше 0\n"+ 
+        console.log("Значення параметрів цієї функції повинні бути більшими, ніж 0\n"+ 
             "Values of these parameters must be bigger than 0"
         );
         return;
