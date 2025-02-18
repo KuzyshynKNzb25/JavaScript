@@ -8,7 +8,11 @@ function findByLegAndHypotenuse(leg, hypotenuse){
     alpha = alpha*180/Math.PI;
     var beta = Math.asin(leg2/hypotenuse);
     beta = beta*180/Math.PI;
-    
+    if(beta === 0 || beta === 90){
+        console.log("Занадто велика різниця між значенням катета або гіпотенузи\n"+
+            "Too large difference between leg and hypotenuse\n\"failed\"");
+            return;
+    }
     console.log(`a = ${leg}
 b = ${leg2}
 c = ${hypotenuse}
@@ -23,7 +27,11 @@ function findByTwoLegs(leg1, leg2){
     alpha = alpha*180/Math.PI;
     var beta = Math.asin(leg2/c);
     beta = beta*180/Math.PI;
-    
+    if(beta === 0 || beta === 90){
+        console.log("Занадто велика різниця між значенням катета або гіпотенузи\n"+
+            "Too large difference between leg and hypotenuse\n\"failed\"");
+            return;
+    }
     console.log(`a = ${leg1}
 b = ${leg2}
 c = ${c}
