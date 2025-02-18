@@ -40,13 +40,13 @@ beta = ${beta}
 
 function findByLegAndAdjacentAngle(adjacentAngle, Leg){
     if(adjacentAngle >= 85){
-        console.log("Значення цього кута повинно бути меншим за 90\n"+
-            "Value of that angle must be less than 90\n\"failed\"");
+        console.log("Значення цього кута повинно бути меншим за 85\n"+
+            "Value of that angle must be less than 85\n\"failed\"");
         return;
     }
     else if (adjacentAngle < 5){
-        console.log("Значення цього кута повинно бути хочаб 1 градус\n"+
-            "Value of that angle must be at least 1 degree\n\"failed\"");
+        console.log("Значення цього кута повинно бути хочаб 5 градус\n"+
+            "Value of that angle must be at least 5 degree\n\"failed\"");
         return;
     }
     let in_radians = adjacentAngle*Math.PI/180;
@@ -64,13 +64,13 @@ beta = ${beta}
 
 function findByLegAndOppositeAngle(oppositeAngle, Leg){
     if(oppositeAngle >= 85){
-        console.log("Значення цього кута повинно бути меншим за 90\n"+
-            "Value of that angle must be less than 90\n\"failed\"");
+        console.log("Значення цього кута повинно бути меншим за 85\n"+
+            "Value of that angle must be less than 85\n\"failed\"");
         return;
     }
     else if (oppositeAngle < 5){
-        console.log("Значення цього кута повинно бути хочаб 1 градус\n"+
-            "Value of that angle must be at least 1 degree\n\"failed\"");
+        console.log("Значення цього кута повинно бути хочаб 5 градус\n"+
+            "Value of that angle must be at least 5 degree\n\"failed\"");
         return;
     }
     let in_radians = oppositeAngle*Math.PI/180;
@@ -88,14 +88,14 @@ beta = ${beta}
 
 function findByHipotenuseAndAngle(angle, hypotenuse){
     if(angle >= 85){
-        console.log("Значення цього кута повинно бути меншим за 90\n"+
-            "Value of that angle must be less than 90\n\"failed\""
+        console.log("Значення цього кута повинно бути меншим за 85\n"+
+            "Value of that angle must be less than 85\n\"failed\""
         );
         return;
     }
     else if (angle < 5){
-        console.log("Значення цього кута повинно бути хочаб 1 градус\n"+
-            "Value of that angle must be at least 1 degree\n\"failed\"");
+        console.log("Значення цього кута повинно бути хочаб 5 градус\n"+
+            "Value of that angle must be at least 5 degree\n\"failed\"");
         return;
     }
     var beta = 90 - angle;
@@ -114,8 +114,8 @@ const rightInputs = [[0,1], [2,0], [3,0], [4,1], [0,0]];
 function triangle(number1, nameOfThatNumber, number2, nameOfNumber2){
 
     if(number1 <= 0.1 || number2 <= 0.1){
-        console.log("Значення параметрів цієї функції повинні бути більше 0\n"+ 
-            "Values of these parameters must be bigger than 0\n\"failed\""
+        console.log("Значення параметрів цієї функції повинні бути більше 0.1\n"+ 
+            "Values of these parameters must be bigger than 0.1\n\"failed\""
         );
         return;
     }
