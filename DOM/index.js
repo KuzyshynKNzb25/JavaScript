@@ -1,6 +1,6 @@
 function findByLegAndHypotenuse(leg, hypotenuse){
-    if(leg > hypotenuse){
-        console.log("Катет не може бути більшим, ніж гіпотенуза\nLeg can't be bigger than hypotenuse\n\"failed\"");
+    if(leg >= hypotenuse){
+        console.log("Катет не може бути більшим, ніж гіпотенуза та не може дорівнювати їй\nLeg can't be bigger than hypotenuse or be equal\n\"failed\"");
         return;
     }
     var leg2 = Math.sqrt(Math.pow(hypotenuse, 2) - Math.pow(leg, 2)) ;
@@ -8,10 +8,7 @@ function findByLegAndHypotenuse(leg, hypotenuse){
     alpha = alpha*180/Math.PI;
     var beta = Math.asin(leg2/hypotenuse);
     beta = beta*180/Math.PI;
-    if(beta < 5 || alpha < 5){
-        console.log("Занадто велика різниця між катетом та гіпотенузою, що не дає коректно розв'язати цю задачу");
-        return;
-    }
+    
     console.log(`a = ${leg}
 b = ${leg2}
 c = ${hypotenuse}
@@ -26,10 +23,7 @@ function findByTwoLegs(leg1, leg2){
     alpha = alpha*180/Math.PI;
     var beta = Math.asin(leg2/c);
     beta = beta*180/Math.PI;
-    if(beta < 5 || alpha < 5){
-        console.log("Занадто велика різниця між катетом та гіпотенузою, що не дає коректно розв'язати цю задачу");
-        return;
-    }
+    
     console.log(`a = ${leg1}
 b = ${leg2}
 c = ${c}
@@ -39,14 +33,14 @@ beta = ${beta}
 }
 
 function findByLegAndAdjacentAngle(adjacentAngle, Leg){
-    if(adjacentAngle >= 85){
-        console.log("Значення цього кута повинно бути меншим за 85\n"+
-            "Value of that angle must be less than 85\n\"failed\"");
+    if(adjacentAngle > 89.999){
+        console.log("Значення цього кута повинно бути меншим за 89.999\n"+
+            "Value of that angle must be less than 89.999\n\"failed\"");
         return;
     }
-    else if (adjacentAngle < 5){
-        console.log("Значення цього кута повинно бути хочаб 5 градус\n"+
-            "Value of that angle must be at least 5 degree\n\"failed\"");
+    else if (adjacentAngle < 0.0001){
+        console.log("Значення цього кута повинно бути хочаб 0.0001 градус\n"+
+            "Value of that angle must be at least 0.0001 degree\n\"failed\"");
         return;
     }
     let in_radians = adjacentAngle*Math.PI/180;
@@ -63,14 +57,14 @@ beta = ${beta}
 }
 
 function findByLegAndOppositeAngle(oppositeAngle, Leg){
-    if(oppositeAngle >= 85){
-        console.log("Значення цього кута повинно бути меншим за 85\n"+
-            "Value of that angle must be less than 85\n\"failed\"");
+    if(oppositeAngle > 89.999){
+        console.log("Значення цього кута повинно бути меншим за 89.999\n"+
+            "Value of that angle must be less than 89.999\n\"failed\"");
         return;
     }
-    else if (oppositeAngle < 5){
-        console.log("Значення цього кута повинно бути хочаб 5 градус\n"+
-            "Value of that angle must be at least 5 degree\n\"failed\"");
+    else if (oppositeAngle < 0.0001){
+        console.log("Значення цього кута повинно бути хочаб 0.0001 градус\n"+
+            "Value of that angle must be at least 0.0001 degree\n\"failed\"");
         return;
     }
     let in_radians = oppositeAngle*Math.PI/180;
@@ -87,15 +81,15 @@ beta = ${beta}
 }
 
 function findByHipotenuseAndAngle(angle, hypotenuse){
-    if(angle >= 85){
-        console.log("Значення цього кута повинно бути меншим за 85\n"+
-            "Value of that angle must be less than 85\n\"failed\""
+    if(angle > 89.999){
+        console.log("Значення цього кута повинно бути меншим за 89.999\n"+
+            "Value of that angle must be less than 89.999\n\"failed\""
         );
         return;
     }
-    else if (angle < 5){
-        console.log("Значення цього кута повинно бути хочаб 5 градус\n"+
-            "Value of that angle must be at least 5 degree\n\"failed\"");
+    else if (angle < 0.0001){
+        console.log("Значення цього кута повинно бути хочаб 0.0001 градус\n"+
+            "Value of that angle must be at least 0.0001 degree\n\"failed\"");
         return;
     }
     var beta = 90 - angle;
@@ -113,9 +107,9 @@ const rightInputs = [[0,1], [2,0], [3,0], [4,1], [0,0]];
 
 function triangle(number1, nameOfThatNumber, number2, nameOfNumber2){
 
-    if(number1 <= 0.1 || number2 <= 0.1){
-        console.log("Значення параметрів цієї функції повинні бути більше 0.1\n"+ 
-            "Values of these parameters must be bigger than 0.1\n\"failed\""
+    if(number1 <= 0 || number2 <= 0){
+        console.log("Значення параметрів цієї функції повинні бути більше 0\n"+ 
+            "Values of these parameters must be bigger than 0\n\"failed\""
         );
         return;
     }
