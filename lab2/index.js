@@ -30,7 +30,8 @@ let car2 = {
 car1.drive = function(){
     console.log("I am not driving at night  .");
 };
-
+car1.drive();
+car2.drive();
 class Truck{
     constructor(color, weight, avgSpeed, brand, model){
         this.color = color;
@@ -43,15 +44,16 @@ class Truck{
                 console.log("No driver assigned");
                 return;
             }
-    
-            console.log("Driver" + this.driver);
+            let check;
             if(this.driver.nightDriving){
-                console.log("drives at night");
+                check = "drives at night";
             }
             else {
-                console.log("does not drive at night");
+                check = "does not drive at night"
             }
-            console.log("and has " + this.driver.experience + " years of experience");
+            console.log(`Driver ${this.driver.name}\n${check}\nand has ${this.driver.experience} years of experience`);
+
+            console.log();
         }
     }
 
@@ -64,6 +66,13 @@ class Truck{
         };
     }; 
 
+    const truck1 = new Truck("Black", 6000, 68, "MAN", "v800");
+    const truck2 = new Truck("Grey", 7500, 84, "SCANIA", "v800");
+    truck1.AssignDriver("Kuzyshyn", true, 8);
+    truck2.AssignDriver("Dmytro", false, 0);
+    truck1.trip();
+    truck2.trip();
+
 class Square{
     constructor(a){
         this.a = a;
@@ -75,7 +84,7 @@ class Square{
             console.log("sides are underfined");
             return;
         }
-        console.log(`Sum of all sides: ${this.length()}`);
+        console.log(`Sum of all sides: ${this.a*4}`);
     }
 
     square(){
@@ -83,7 +92,7 @@ class Square{
             console.log("side a is underfined");
             return;
         }
-        console.log(`Square: ${this.square()}`);
+        console.log(`Square: ${this.a*this.a}`);
     }
 
     info(){
@@ -210,7 +219,7 @@ class Parallelogram extends Rectangle{
     }
 
     static help = function(){
-        console.log("It's a rhombus, that figure has all sides and angles different ");
+        console.log("It's a paralelogram, that figure has all sides and angles different ");
     }
 
     length(){
@@ -225,8 +234,8 @@ class Parallelogram extends Rectangle{
         if(this.beta > 90){
             this.beta -=90;
         }
-
-        const height = this.a * Math.sin(beta);
+        const inRadians = this.beta*Math.PI/180;
+        const height = this.a * Math.sin(inRadians);
         return height*this.a;
     }
 
@@ -246,9 +255,33 @@ class Parallelogram extends Rectangle{
     }
 }
 
+Square.help();
+Rectangle.help();
+Rhombus.help();
+Parallelogram.help();
+const square = new Square(10);
+const rectangle = new Rectangle(10, 25);
+const rhombus = new Rhombus(10, 60,120);
+const paralelogram = new Parallelogram(13, 40, 100, 80);
+square.info();
+rectangle.info();
+rhombus.info();
+paralelogram.info();
+
+
+
+
+
 function Triangular(a = 3, b = 4, c = 5){
     return {a, b, c};
 }
+
+const triangle1 = Triangular(5,10,19);
+console.log(triangle1);
+const triangle2 = Triangular(15,140,19);
+console.log(triangle2);
+const triangle3 = Triangular();
+console.log(triangle3);
 
 function PiMultiplier(num){
     const result = function(num){
@@ -256,6 +289,9 @@ function PiMultiplier(num){
     }
     return result(num);
 }
+console.log(PiMultiplier(2)) ;
+console.log(PiMultiplier(2/3)) ;
+console.log(PiMultiplier(0.5)) ;
 
 function Painter(color) {
     return function (obj) {
@@ -276,3 +312,29 @@ function Painter(color) {
         }
     };
 }
+
+const PaintBlue = Painter("Blue");
+const PaintRed = Painter("Red");
+const PaintYellow = Painter("Yellow");
+
+obj1 = {
+    maxSpeed:280,
+    type: "Sportcar",
+    color: "magenta",
+};
+
+obj2 = {    
+    type: "Truck",
+    "avg speed":90,
+    "load capacity": 2400,
+};
+
+obj3 = {    
+    maxSpeed:180,
+    color: "purple",
+    isCar: true,
+};
+
+PaintBlue(obj1);
+PaintRed(obj2);
+PaintYellow(obj3);
