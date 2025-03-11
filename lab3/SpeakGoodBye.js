@@ -1,8 +1,8 @@
 (function(window){
     const libBuy = {};
-    libBuy.speakWord = "Good Bye";
+    let speakWord = "Good Bye";
     libBuy.speak = function (name) {
-        console.log(libBuy.speakWord + " " + name);
+        console.log(speakWord + " " + name);
       }
       window.buy = libBuy;
 
