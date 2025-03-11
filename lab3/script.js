@@ -1,13 +1,13 @@
 const names = ["Bill", "John", "Jen", "Jason", "Paul", "Frank", "Steven", "Larry", "Paula", "Laura", "Jim"];
 
-for (humanName in names) {
+for (humanName of names) {
 
   
-  if (names[humanName].toLowerCase().charAt(0) === 'j') {
-    console.log(window.buy.speak(names[humanName]));
+  if (humanName.toLowerCase().charAt(0) === 'j') {
+    window.libBuy.speak(humanName);
     
   } else {
-    console.log(window.hello.speak(names[humanName]));
+    window.libHello.speak(humanName);
 
   }
 }
