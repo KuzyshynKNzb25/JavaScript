@@ -1,9 +1,9 @@
 
 (function(window){
     const libHello = {};
-    libHello.speakWord = "Hello";
+    let speakWord = "Hello";
     libHello.speak = function (name) {
-        console.log(libHello.speakWord + " " + name);
+        console.log(speakWord + " " + name);
       }
       window.hello = libHello;
 
