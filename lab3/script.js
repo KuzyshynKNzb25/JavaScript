@@ -10,4 +10,21 @@ for (humanName of names) {
     window.hello.speak(humanName);
 
   }
+  
+}
+
+console.log("\n\n");
+
+let stillNotAtHome;
+  for (let i = names.length - 1; i >= 0; i--) {
+    if (names[i].toLowerCase().charAt(0) != 'j') {
+      window.buy.speak(names[i]);
+      
+    } else {
+      stillNotAtHome = Math.random() < 0.5;
+      if(stillNotAtHome){
+        window.goHome.speak(names[i]);
+      }
+  
+    }
 }
