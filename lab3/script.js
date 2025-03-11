@@ -4,10 +4,10 @@ for (humanName of names) {
 
   
   if (humanName.toLowerCase().charAt(0) === 'j') {
-    window.libBuy.speak(humanName);
+    window.buy.speak(humanName);
     
   } else {
-    window.libHello.speak(humanName);
+    window.hello.speak(humanName);
 
   }
 }
