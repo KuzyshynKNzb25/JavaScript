@@ -6,6 +6,7 @@ const plates = document.getElementsByClassName("item");
 const target = document.getElementById("target");
 const moves = document.getElementById("moves");
 const timerDisplay = document.getElementById("time");
+const youAreWinner = document.getElementById("youWinner");
 let currentObject = {};
 let numberOfMinMovies = 0;
 let index = 0;
@@ -50,6 +51,7 @@ function onStartGame() {
     moves.textContent = "Moves: 0";
     if(isYouAreWinner){
         isYouAreWinner = false;
+        youAreWinner.style.display = "none";
     }
     $ajaxUtils.sendGetRequest("data/tables.json",setupGameTable, true);
 
@@ -63,6 +65,7 @@ function onRestartGame() {
     moves.textContent = "Moves: 0";
     if(isYouAreWinner){
         isYouAreWinner = false;
+        youAreWinner.style.display = "none";
     }
     $ajaxUtils.sendGetRequest("data/tables.json",restart, true);
 }
@@ -173,6 +176,7 @@ function setButtonsClickable(){
             if(isYouAreWinner){
                 clearInterval(timer);
                 timerIsGoing = false;
+                youAreWinner.style.display = "block";
             }
         });
 
