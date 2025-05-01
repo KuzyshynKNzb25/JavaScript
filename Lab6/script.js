@@ -12,6 +12,7 @@ let index = 0;
 let timer;
 let numberOfMoves = 0;
 let timerIsGoing = false;
+let isYouAreWinner = false;
 function setField(){
     numberOfMinMovies = currentObject.minNumberOfMovies;
     for (let i = 0;i < currentObject.matrixon.length; i++) {
@@ -47,7 +48,11 @@ function onStartGame() {
     timerDisplay.textContent = `Time: 0`
     numberOfMoves = 0;
     moves.textContent = "Moves: 0";
+    if(isYouAreWinner){
+        isYouAreWinner = false;
+    }
     $ajaxUtils.sendGetRequest("data/tables.json",setupGameTable, true);
+
 }
 
 function onRestartGame() {
@@ -56,100 +61,126 @@ function onRestartGame() {
     timerDisplay.textContent = `Time: 0`
     numberOfMoves = 0;
     moves.textContent = "Moves: 0";
+    if(isYouAreWinner){
+        isYouAreWinner = false;
+    }
     $ajaxUtils.sendGetRequest("data/tables.json",restart, true);
 }
 
 $ajaxUtils.sendGetRequest("data/tables.json",setupGameTable, true);
 
 
-
-for (let i = 0; i < plates.length; i++) {
-    plates[i].addEventListener('click', () => {
-        let horizontalPosition =  i % currentObject.matrixon.length;
-        let verticalPosition =  i/currentObject.matrixon.length|0;
-        if(!timerIsGoing){
-            startTimer();
-        }
-        numberOfMoves++;
-        moves.textContent = `Moves: ${numberOfMoves}`;
-        if(horizontalPosition === 0){
-            for(let j = 0;j < 2;j++){
-                if(currentObject.matrixon[verticalPosition][j] == 1){
-                    currentObject.matrixon[verticalPosition][j] = 0;
-                    plates[verticalPosition*currentObject.matrixon.length+j].style.backgroundColor = "#222233";
-                }
-                else {
-                    currentObject.matrixon[verticalPosition][j] = 1;
-                    plates[verticalPosition*currentObject.matrixon.length+j].style.backgroundColor = "#ffff99";
-                }
-            }
-        }
-        else if(horizontalPosition === currentObject.matrixon.length-1){
-            for(let j = currentObject.matrixon.length-2;j < currentObject.matrixon.length;j++) {
-                if(currentObject.matrixon[verticalPosition][j] == 1){
-                    currentObject.matrixon[verticalPosition][j] = 0;
-                    plates[verticalPosition*currentObject.matrixon.length+j].style.backgroundColor = "#222233";
-                }
-                else {
-                    currentObject.matrixon[verticalPosition][j] = 1;
-                    plates[verticalPosition*currentObject.matrixon.length+j].style.backgroundColor = "#ffff99";
-                }
-            }
-        }
-        else {
-            for(let j = horizontalPosition - 1;j <= horizontalPosition+1;j++) {
-                if(currentObject.matrixon[verticalPosition][j] == 1){
-                    currentObject.matrixon[verticalPosition][j] = 0;
-                    plates[verticalPosition*currentObject.matrixon.length+j].style.backgroundColor = "#222233";
-                }
-                else {
-                    currentObject.matrixon[verticalPosition][j] = 1;
-                    plates[verticalPosition*currentObject.matrixon.length+j].style.backgroundColor = "#ffff99";
-                }
-            }
-        }
-
-        if(verticalPosition === 0){
-            if(currentObject.matrixon[1][horizontalPosition] == 1){
-                currentObject.matrixon[1][horizontalPosition] = 0;
-                plates[1*currentObject.matrixon.length + horizontalPosition].style.backgroundColor = "#222233";
-            }
-            else {
-                currentObject.matrixon[1][horizontalPosition] = 1;
-                plates[1*currentObject.matrixon.length + horizontalPosition].style.backgroundColor = "#ffff99";
-            }
-        }
-        else if(verticalPosition === currentObject.matrixon.length-1){
-            if(currentObject.matrixon[verticalPosition-1][horizontalPosition] == 1){
-                currentObject.matrixon[verticalPosition-1][horizontalPosition] = 0;
-                plates[(verticalPosition-1)*currentObject.matrixon.length + horizontalPosition].style.backgroundColor = "#222233";
-            }
-            else {
-                currentObject.matrixon[verticalPosition-1][horizontalPosition] = 1;
-                plates[(verticalPosition-1)*currentObject.matrixon.length + horizontalPosition].style.backgroundColor = "#ffff99";
-            }
-        }
-        else {
-            if(currentObject.matrixon[verticalPosition-1][horizontalPosition] == 1){
-                currentObject.matrixon[verticalPosition-1][horizontalPosition] = 0;
-                plates[(verticalPosition-1)*currentObject.matrixon.length + horizontalPosition].style.backgroundColor = "#222233";
-            }
-            else {
-                currentObject.matrixon[verticalPosition-1][horizontalPosition] = 1;
-                plates[(verticalPosition-1)*currentObject.matrixon.length + horizontalPosition].style.backgroundColor = "#ffff99";
+function setButtonsClickable(){
+    for (let i = 0; i < plates.length; i++) {
+        plates[i].addEventListener('click', () => {
+            if(isYouAreWinner){
+                return;
             }
 
-            if(currentObject.matrixon[verticalPosition+1][horizontalPosition] == 1){
-                currentObject.matrixon[verticalPosition+1][horizontalPosition] = 0;
-                plates[(verticalPosition+1)*currentObject.matrixon.length + horizontalPosition].style.backgroundColor = "#222233";
+            let horizontalPosition =  i % currentObject.matrixon.length;
+            let verticalPosition =  i/currentObject.matrixon.length|0;
+            if(!timerIsGoing){
+                startTimer();
+            }
+
+            numberOfMoves++;
+            moves.textContent = `Moves: ${numberOfMoves}`;
+            if(horizontalPosition === 0){
+                for(let j = 0;j < 2;j++){
+                    if(currentObject.matrixon[verticalPosition][j] == 1){
+                        currentObject.matrixon[verticalPosition][j] = 0;
+                        plates[verticalPosition*currentObject.matrixon.length+j].style.backgroundColor = "#222233";
+                    }
+                    else {
+                        currentObject.matrixon[verticalPosition][j] = 1;
+                        plates[verticalPosition*currentObject.matrixon.length+j].style.backgroundColor = "#ffff99";
+                    }
+                }
+            }
+            else if(horizontalPosition === currentObject.matrixon.length-1){
+                for(let j = currentObject.matrixon.length-2;j < currentObject.matrixon.length;j++) {
+                    if(currentObject.matrixon[verticalPosition][j] == 1){
+                        currentObject.matrixon[verticalPosition][j] = 0;
+                        plates[verticalPosition*currentObject.matrixon.length+j].style.backgroundColor = "#222233";
+                    }
+                    else {
+                        currentObject.matrixon[verticalPosition][j] = 1;
+                        plates[verticalPosition*currentObject.matrixon.length+j].style.backgroundColor = "#ffff99";
+                    }
+                }
             }
             else {
-                currentObject.matrixon[verticalPosition+1][horizontalPosition] = 1;
-                plates[(verticalPosition+1)*currentObject.matrixon.length + horizontalPosition].style.backgroundColor = "#ffff99";
+                for(let j = horizontalPosition - 1;j <= horizontalPosition+1;j++) {
+                    if(currentObject.matrixon[verticalPosition][j] == 1){
+                        currentObject.matrixon[verticalPosition][j] = 0;
+                        plates[verticalPosition*currentObject.matrixon.length+j].style.backgroundColor = "#222233";
+                    }
+                    else {
+                        currentObject.matrixon[verticalPosition][j] = 1;
+                        plates[verticalPosition*currentObject.matrixon.length+j].style.backgroundColor = "#ffff99";
+                    }
+                }
             }
-        }
-    });
+
+            if(verticalPosition === 0){
+                if(currentObject.matrixon[1][horizontalPosition] == 1){
+                    currentObject.matrixon[1][horizontalPosition] = 0;
+                    plates[1*currentObject.matrixon.length + horizontalPosition].style.backgroundColor = "#222233";
+                }
+                else {
+                    currentObject.matrixon[1][horizontalPosition] = 1;
+                    plates[1*currentObject.matrixon.length + horizontalPosition].style.backgroundColor = "#ffff99";
+                }
+            }
+            else if(verticalPosition === currentObject.matrixon.length-1){
+                if(currentObject.matrixon[verticalPosition-1][horizontalPosition] == 1){
+                    currentObject.matrixon[verticalPosition-1][horizontalPosition] = 0;
+                    plates[(verticalPosition-1)*currentObject.matrixon.length + horizontalPosition].style.backgroundColor = "#222233";
+                }
+                else {
+                    currentObject.matrixon[verticalPosition-1][horizontalPosition] = 1;
+                    plates[(verticalPosition-1)*currentObject.matrixon.length + horizontalPosition].style.backgroundColor = "#ffff99";
+                }
+            }
+            else {
+                if(currentObject.matrixon[verticalPosition-1][horizontalPosition] == 1){
+                    currentObject.matrixon[verticalPosition-1][horizontalPosition] = 0;
+                    plates[(verticalPosition-1)*currentObject.matrixon.length + horizontalPosition].style.backgroundColor = "#222233";
+                }
+                else {
+                    currentObject.matrixon[verticalPosition-1][horizontalPosition] = 1;
+                    plates[(verticalPosition-1)*currentObject.matrixon.length + horizontalPosition].style.backgroundColor = "#ffff99";
+                }
+
+                if(currentObject.matrixon[verticalPosition+1][horizontalPosition] == 1){
+                    currentObject.matrixon[verticalPosition+1][horizontalPosition] = 0;
+                    plates[(verticalPosition+1)*currentObject.matrixon.length + horizontalPosition].style.backgroundColor = "#222233";
+                }
+                else {
+                    currentObject.matrixon[verticalPosition+1][horizontalPosition] = 1;
+                    plates[(verticalPosition+1)*currentObject.matrixon.length + horizontalPosition].style.backgroundColor = "#ffff99";
+                }
+            }
+            isYouAreWinner = true;
+            for(let j = 0; j < currentObject.matrixon.length;j++){
+                for(let k = 0;k < currentObject.matrixon[j].length;k++){
+                    if(currentObject.matrixon[j][k] === 1){
+                        isYouAreWinner = false;
+                        break;
+                    }
+                }
+            }
+            if(isYouAreWinner){
+                clearInterval(timer);
+                timerIsGoing = false;
+            }
+        });
+
+    }
 }
+
+setButtonsClickable();
+
 function startTimer() {
     timerIsGoing = true;
 
