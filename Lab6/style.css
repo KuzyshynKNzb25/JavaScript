@@ -19,6 +19,13 @@ button {
     width: 200px;
 }
 
+#youWinner {
+    position: absolute;
+    top: 50%;
+    font-size: 40px;
+    color: red;
+    display: none;
+}
 .buttons {
     display: flex;
     justify-content: space-between;
