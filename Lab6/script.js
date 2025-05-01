@@ -11,6 +11,7 @@ let numberOfMinMovies = 0;
 let index = 0;
 let timer;
 let numberOfMoves = 0;
+let timerIsGoing = false;
 function setField(){
     numberOfMinMovies = currentObject.minNumberOfMovies;
     for (let i = 0;i < currentObject.matrixon.length; i++) {
@@ -41,19 +42,21 @@ function restart(res) {
 }
 
 function onStartGame() {
+    clearInterval(timer);
+    timerIsGoing = false;
     timerDisplay.textContent = `Time: 0`
     numberOfMoves = 0;
     moves.textContent = "Moves: 0";
     $ajaxUtils.sendGetRequest("data/tables.json",setupGameTable, true);
-    startTimer();
 }
 
 function onRestartGame() {
+    clearInterval(timer);
+    timerIsGoing = false;
     timerDisplay.textContent = `Time: 0`
     numberOfMoves = 0;
     moves.textContent = "Moves: 0";
     $ajaxUtils.sendGetRequest("data/tables.json",restart, true);
-    startTimer();
 }
 
 $ajaxUtils.sendGetRequest("data/tables.json",setupGameTable, true);
@@ -64,6 +67,9 @@ for (let i = 0; i < plates.length; i++) {
     plates[i].addEventListener('click', () => {
         let horizontalPosition =  i % currentObject.matrixon.length;
         let verticalPosition =  i/currentObject.matrixon.length|0;
+        if(!timerIsGoing){
+            startTimer();
+        }
         numberOfMoves++;
         moves.textContent = `Moves: ${numberOfMoves}`;
         if(horizontalPosition === 0){
@@ -144,8 +150,8 @@ for (let i = 0; i < plates.length; i++) {
         }
     });
 }
-
 function startTimer() {
+    timerIsGoing = true;
 
     clearInterval(timer);
     let time = 0;
