@@ -52,6 +52,14 @@
             html = insertProperty(html, "image_name", image_name);
             finalHtml += html;
         }
+        let secret = Math.floor(Math.random() * categories.length);
+        let html = categoryTemplate;
+        const name = "" + categories[secret].name;
+        html = insertProperty(html, "name", name);            
+        html = insertProperty(html, "shortname", "Specials");
+        html = insertProperty(html, "notes", "Випадкова категорія");
+        html = insertProperty(html, "image_name", "particle-style-question-mark-background-design-query_1017-43011.avif");
+        finalHtml += html;
         finalHtml += "</div>";
         return finalHtml;
     }
