@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="style.css" rel="stylesheet" />
+    <title>Market</title>
+  </head>
+  <body>
+    <header class="main-fon">
+      <div id="footer-content">
+        <a href="index.html" id="restart-page">
+          <img src="images/kluch.webp" alt="Logotyp" id="logo" />
+        </a>
+
+        <div class="main-distance">
+          <div id="nameSSHamburger">
+            <h2>Simple market</h2>
+            <svg
+              id="hamburger"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-menu-icon lucide-menu"
+            >
+              <path d="M4 12h16" />
+              <path d="M4 18h16" />
+              <path d="M4 6h16" />
+            </svg>
+          </div>
+
+          <div class="row-of-icons">
+            <a id="homeRef" href="index.html">
+              <div class="icon-container">
+                <svg
+                  class="home"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-house-icon lucide-house"
+                >
+                  <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" />
+                  <path
+                    d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"
+                  />
+                </svg>
+                <span class="description">Home</span>
+              </div>
+            </a>
+
+            <div class="icon-container">
+              <img
+                src="images/bag_icon.png"
+                alt=""
+                class="icons"
+                onclick="$simar.loadCatalogCatagories();"
+              />
+              <span class="description">Catalog</span>
+            </div>
+            <div class="icon-container">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-settings-icon lucide-settings"
+              >
+                <path
+                  d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"
+                />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+              <span class="description">Settings</span>
+            </div>
+            <div class="icon-container">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-info-icon lucide-info"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <path d="M12 16v-4" />
+                <path d="M12 8h.01" />
+              </svg>
+              <span class="description">Info</span>
+            </div>
+            <div class="icon-container">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-user-icon lucide-user"
+              >
+                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+                <circle cx="12" cy="7" r="4" />
+              </svg>
+              <span class="description">Sign in</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div id="context-fon">
+      <div class="carousel">
+        <div class="carousel-track">
+          <img
+            src="images/category_images/Kamaz_truck_on_Armii_Krajowej_street_in_Kraków.jpg"
+            class="carousel-slide"
+          />
+          <img src="images/category_images/images.png" class="carousel-slide" />
+          <img src="images/category_images/images.jpg" class="carousel-slide" />
+          <img
+            src="images/category_images/84289-1_large-min.jpeg"
+            class="carousel-slide"
+          />
+        </div>
+
+        <button class="carousel-btn prev">&#10094;</button>
+        <button class="carousel-btn next">&#10095;</button>
+
+        <div class="carousel-dots">
+          <span class="dot active" data-index="0"></span>
+          <span class="dot" data-index="1"></span>
+          <span class="dot" data-index="2"></span>
+          <span class="dot" data-index="3"></span>
+        </div>
+      </div>
+
+      <div id="large-home-images" class="home-images">
+        <img src="images/category_images/for large display/11.jpg" alt="" />
+        <img src="images/category_images/for large display/mesh-1200x900.jpg" alt="" />
+        <img src="images/category_images/for large display/oughness-6-dyuymoviy-vibratsiyniy-shpatel-dlya_32f179gelanfnqsw6r.jpg" alt="" />
+      </div>
+
+      <div id="medium-home-images" class="home-images">
+        <img src="images/category_images/for medium display/105_05.jpg" alt="" />
+        <img src="images/category_images/for medium display/2148788768_w600_h600_2148788768.webp" alt="" />
+        <img src="images/category_images/for medium display/2392298792_w600_h600_2392298792.webp" alt="" />
+      </div>
+
+
+      
+        
+      
+    </div>
+    <script src="ajax-utils.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
