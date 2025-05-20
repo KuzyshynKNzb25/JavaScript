@@ -23,17 +23,6 @@ const hamburger = document.getElementById("hamburger");
         return string;
     }
 
-    //first content on the page
-    // document.addEventListener("DOMContentLoaded", function(event){
-    //         //on first load
-    //         $ajaxUtils.sendGetRequest(categoryTemplate, 
-    //             function(resposeText){
-    //                 document.querySelector("#content-place").innerHTML = resposeText;
-    //             },
-    //             false
-    //         );
-    // })
-
     const buildAndShowCategoriesHTML = function (categories){
         $ajaxUtils.sendGetRequest(
             categoryTemplate,
@@ -124,22 +113,21 @@ const hamburger = document.getElementById("hamburger");
 
   function updateCarousel(index) {
     track.style.transform = `translateX(-${index * 100}%)`;
-
-    dots.forEach(dot => dot.classList.remove('active'));
     dots[index].classList.add('active');
   }
 
   function goToNextSlide() {
+    dots[currentIndex].classList.remove('active')
     currentIndex = (currentIndex + 1) % totalSlides;
     updateCarousel(currentIndex);
   }
 
   function goToPrevSlide() {
+    dots[currentIndex].classList.remove('active')
     currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
     updateCarousel(currentIndex);
   }
 
-  // Автоперемикання
   let slideInterval = setInterval(goToNextSlide, 10000);
 
   nextBtn.addEventListener('click', () => {
@@ -154,6 +142,9 @@ const hamburger = document.getElementById("hamburger");
 
   dots.forEach(dot => {
     dot.addEventListener('click', () => {
+      if(currentIndex || currentIndex === 0){
+        dots[currentIndex].classList.remove('active');
+      }
       currentIndex = parseInt(dot.getAttribute('data-index'));
       updateCarousel(currentIndex);
       resetInterval();
@@ -162,7 +153,7 @@ const hamburger = document.getElementById("hamburger");
 
   function resetInterval() {
     clearInterval(slideInterval);
-    slideInterval = setInterval(goToNextSlide, 4000);
+    slideInterval = setInterval(goToNextSlide, 10000);
   }
 
   updateCarousel(currentIndex);
