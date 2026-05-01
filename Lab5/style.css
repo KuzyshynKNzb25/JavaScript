@@ -5,6 +5,8 @@ html {
 body {
     background-color: #b4be8a;
     color: #1F2937;
+font-family: "Roboto", sans-serif;
+    line-height: 1.6;
 }
 
 * {
@@ -31,6 +33,7 @@ h1 {
     color: #F7F9F2;
     font-size: 56px;
     margin-bottom: 120px;
+    line-height: 1;
 }
 
 h2 {
@@ -159,6 +162,11 @@ ul {
     padding-top: 120px;
     box-sizing: border-box;
     margin-bottom: 0;
+}
+
+.small-text {
+    font-size: 18px;
+    line-height: 1.6;
 }
 
 .spring-logo {
